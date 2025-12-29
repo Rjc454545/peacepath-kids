@@ -1,0 +1,47 @@
+{
+  "name": "peacepath-kids",
+  "version": "1.0.0",
+  "description": "Faith-based cognitive wellness app for special needs children ages 6-16",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.0.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "firebase": "10.7.1",
+    "stripe": "14.9.0",
+    "bcryptjs": "2.4.3",
+    "react-chartjs-2": "5.2.0",
+    "chart.js": "4.4.1",
+    "jspdf": "2.5.1",
+    "emailjs-com": "3.2.0",
+    "fingerprint-js": "2.1.4"
+  },
+  "devDependencies": {
+    "eslint": "8.56.0",
+    "eslint-config-next": "14.0.4"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "faith",
+    "special needs",
+    "children",
+    "cognitive wellness",
+    "autism",
+    "adhd",
+    "ministry",
+    "education"
+  ],
+  "author": "Building On The Faith Ministry - Elder Robert Chalk Jr.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rjc454545/peacepath-kids.git"
+  }
+}
