@@ -4,9 +4,7 @@ import Head from 'next/head';
 
 export default function Welcome() {
   const router = useRouter();
-  const [chatInput, setChat
-
-Input] = useState('');
+ const [chatInput, setChatInput] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
   const [activeFaq, setActiveFaq] = useState(null);
   const [activeTrouble, setActiveTrouble] = useState(null);
