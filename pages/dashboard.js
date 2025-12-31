@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { auth, db } from '../lib/firebase';
 import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
 import { signOut } from 'firebase/auth';
-
+import { onFirstActivityComplete, on7DayStreak, on30Activities, on50Activities, on100Activities } from '../utils/emailAutomation';
 export default function Dashboard() {
   const router = useRouter();
   const [user, setUser] = useState(null);
