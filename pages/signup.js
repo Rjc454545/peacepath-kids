@@ -5,7 +5,7 @@ import { auth, db } from '../lib/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { validateEmail, validatePassword, sanitizeInput } from '../utils/helpers';
-
+import { onUserSignup } from '../utils/emailAutomation';
 export default function Signup() {
   const router = useRouter();
   const [formData, setFormData] = useState({
