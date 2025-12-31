@@ -117,7 +117,13 @@ export default function Signup() {
         marketingOptIn: formData.agreedToMarketing,
         children: []
       });
-
+// Send Day 1 onboarding email
+      try {
+        await onUserSignup(userCredential.user.uid);
+        console.log('✅ Welcome email sent!');
+      } catch (error) {
+        console.error('Email error:', error);
+      }
       // Redirect to survey to complete profile
       router.push('/survey');
 
