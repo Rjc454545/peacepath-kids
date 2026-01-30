@@ -4,7 +4,7 @@ import Head from 'next/head';
 
 export default function Welcome() {
   const router = useRouter();
- const [chatInput, setChatInput] = useState('');
+  const [chatInput, setChatInput] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
   const [activeFaq, setActiveFaq] = useState(null);
   const [activeTrouble, setActiveTrouble] = useState(null);
@@ -114,44 +114,13 @@ export default function Welcome() {
       { issue: "Privacy concerns", solution: "Review our Privacy Policy. We never share child data. Contact support with concerns." }
     ],
     "Activities & Content": [
-      { issue: "Can't find activity type", solution: "Use Dashboard search or filter by category. All 15 categories listed on home page." },
-      { issue: "Activity too hard/easy", solution: "Update child profile age and abilities. Activities auto-adjust to profile." },
-      { issue: "Want to skip activity", solution: "Click 'Next Activity' or return to category page to choose different activity." },
-      { issue: "Activity recommendations wrong", solution: "Update survey responses in child profile for better personalization." },
-      { issue: "Need printable version", solution: "Many activities have print option. Click printer icon when available." },
-      { issue: "Suggestions for new activities", solution: "Dashboard → Feedback → Suggest Activity. We review all suggestions." },
-      { issue: "Activity contains error", solution: "Use 'Report Issue' button on activity page. Include screenshot if possible." },
-      { issue: "Can't track completion", solution: "Ensure logged in. Progress saves automatically when activity marked complete." }
-    ],
-    "Technical Support": [
-      { issue: "Browser compatibility", solution: "Chrome, Firefox, Safari, Edge supported. Update to latest version for best experience." },
-      { issue: "Mobile vs desktop", solution: "Full features on desktop. Mobile has core features but some limitations." },
-      { issue: "Screen reader issues", solution: "We support NVDA, JAWS, VoiceOver. Report specific issues to support." },
-      { issue: "Keyboard navigation", solution: "Tab to navigate, Enter to select, Esc to close. Full keyboard support included." },
-      { issue: "Need accessibility help", solution: "Dashboard → Settings → Accessibility has text size, contrast, and screen reader options." },
-      { issue: "Offline access", solution: "App requires internet connection. Offline mode coming in future update." },
-      { issue: "System requirements", solution: "Modern browser, 1GB RAM, 10Mbps internet recommended for best experience." },
-      { issue: "Contact real person", solution: "Email buildingonthefaithmin@gmail.com or use chatbot below for immediate help." }
+      { issue: "Can't find specific activity", solution: "Use search bar or browse by category. Filter by age or special need." },
+      { issue: "Activity too hard/easy", solution: "We'll add difficulty options soon! Email suggestions for content adjustments." },
+      { issue: "Want more content", solution: "New activities added monthly based on user feedback. Submit requests via support." },
+      { issue: "Technical issue in activity", solution: "Report bugs via Dashboard → Support → Report Issue with activity name." },
+      { issue: "Progress not tracked", solution: "Ensure activity is completed fully. Check 'Activity Complete' confirmation appears." }
     ]
   };
-
-  const categories = [
-    { name: 'Bible Stories', icon: '📖', desc: 'Interactive stories from Scripture with discussion prompts' },
-    { name: 'Memory Verses', icon: '✝️', desc: 'KJV verse memorization with visual aids' },
-    { name: 'Prayer Time', icon: '🙏', desc: 'Guided prayers and prayer prompts' },
-    { name: 'Worship Songs', icon: '🎵', desc: 'Child-friendly worship music' },
-    { name: 'Meditation', icon: '🕊️', desc: 'Calming exercises with Scripture focus' },
-    { name: 'Art & Creativity', icon: '🎨', desc: 'Faith-inspired art projects' },
-    { name: 'Nature Exploration', icon: '🌿', desc: 'Outdoor activities celebrating creation' },
-    { name: 'Kindness Activities', icon: '💝', desc: 'Service projects and acts of kindness' },
-    { name: 'Music & Rhythm', icon: '🎹', desc: 'Musical activities for development' },
-    { name: 'Breathing Exercises', icon: '🌬️', desc: 'Calming breathing with Scripture' },
-    { name: 'Story Creation', icon: '📝', desc: 'Creative writing with faith themes' },
-    { name: 'Movement & Dance', icon: '💃', desc: 'Physical activities and worship dance' },
-    { name: 'Gratitude Journal', icon: '📔', desc: 'Daily thankfulness prompts' },
-    { name: 'Sensory Activities', icon: '✨', desc: 'Multi-sensory faith experiences' },
-    { name: 'Social Skills', icon: '👥', desc: 'Friendship and communication lessons' }
-  ];
 
   const handleChatSubmit = (e) => {
     e.preventDefault();
@@ -187,9 +156,7 @@ export default function Welcome() {
       setChatHistory(prev => [...prev, { type: 'bot', message: botResponse }]);
     }, 500);
 
-    setChat
-
-Input('');
+    setChatInput('');  // ✅ FIXED: This was "setChat" split across two lines
   };
 
   return (
@@ -203,22 +170,25 @@ Input('');
         {/* Header */}
         <div style={styles.header}>
           <div style={styles.logo}>🕊️💝✝️</div>
-          <h1 style={styles.title}>Help Center</h1>
-          <p style={styles.subtitle}>We're here to support your family's faith journey</p>
+          <h1 style={styles.title}>PeacePath Kids Help Center</h1>
+          <p style={styles.subtitle}>Find answers, get support, and learn how to make the most of PeacePath Kids</p>
         </div>
 
         {/* Quick Links */}
         <div style={styles.quickLinks}>
-          <button onClick={() => document.getElementById('getting-started').scrollIntoView({ behavior: 'smooth' })} style={styles.quickLink}>
+          <button onClick={() => document.getElementById('getting-started').scrollIntoView({behavior: 'smooth'})} style={styles.quickLink}>
             🚀 Getting Started
           </button>
-          <button onClick={() => document.getElementById('faqs').scrollIntoView({ behavior: 'smooth' })} style={styles.quickLink}>
-            ❓ FAQs
+          <button onClick={() => document.getElementById('categories').scrollIntoView({behavior: 'smooth'})} style={styles.quickLink}>
+            📚 Activity Categories
           </button>
-          <button onClick={() => document.getElementById('troubleshooting').scrollIntoView({ behavior: 'smooth' })} style={styles.quickLink}>
+          <button onClick={() => document.getElementById('faq').scrollIntoView({behavior: 'smooth'})} style={styles.quickLink}>
+            ❓ FAQ
+          </button>
+          <button onClick={() => document.getElementById('troubleshooting').scrollIntoView({behavior: 'smooth'})} style={styles.quickLink}>
             🔧 Troubleshooting
           </button>
-          <button onClick={() => document.getElementById('chatbot').scrollIntoView({ behavior: 'smooth' })} style={styles.quickLink}>
+          <button onClick={() => document.getElementById('chatbot').scrollIntoView({behavior: 'smooth'})} style={styles.quickLink}>
             💬 Chat Support
           </button>
         </div>
@@ -227,48 +197,71 @@ Input('');
         <section id="getting-started" style={styles.section}>
           <h2 style={styles.sectionTitle}>🚀 Getting Started</h2>
           <div style={styles.stepsGrid}>
-            {[
-              { num: 1, title: 'Sign Up Free', desc: 'Create your account in 2 minutes. No credit card needed for 7-day trial.' },
-              { num: 2, title: 'Complete Survey', desc: 'Tell us about your child so we can personalize activities.' },
-              { num: 3, title: 'Explore Activities', desc: 'Browse 475 faith-based activities designed for special needs.' },
-              { num: 4, title: 'Track Progress', desc: 'Watch your child grow with detailed analytics in the parent dashboard.' },
-              { num: 5, title: 'Choose Your Plan', desc: 'After trial, select Individual ($6.99) or Family ($12.99) plan.' }
-            ].map(step => (
-              <div key={step.num} style={styles.stepCard}>
-                <div style={styles.stepNumber}>{step.num}</div>
-                <h3 style={styles.stepTitle}>{step.title}</h3>
-                <p style={styles.stepDesc}>{step.desc}</p>
-              </div>
-            ))}
+            <div style={styles.stepCard}>
+              <div style={styles.stepNumber}>1</div>
+              <div style={styles.stepTitle}>Create Account</div>
+              <p style={styles.stepDesc}>Sign up with email or Google. Takes less than 2 minutes!</p>
+            </div>
+            <div style={styles.stepCard}>
+              <div style={styles.stepNumber}>2</div>
+              <div style={styles.stepTitle}>Complete Survey</div>
+              <p style={styles.stepDesc}>Tell us about your child's needs and preferences</p>
+            </div>
+            <div style={styles.stepCard}>
+              <div style={styles.stepNumber}>3</div>
+              <div style={styles.stepTitle}>Start 7-Day Trial</div>
+              <p style={styles.stepDesc}>Full access to all 475 activities - no credit card needed</p>
+            </div>
+            <div style={styles.stepCard}>
+              <div style={styles.stepNumber}>4</div>
+              <div style={styles.stepTitle}>Explore Activities</div>
+              <p style={styles.stepDesc}>Browse by category, age, or special need</p>
+            </div>
           </div>
         </section>
 
         {/* Activity Categories */}
-        <section style={styles.section}>
-          <h2 style={styles.sectionTitle}>📚 Activity Categories</h2>
+        <section id="categories" style={styles.section}>
+          <h2 style={styles.sectionTitle}>📚 Activity Categories (475 Total)</h2>
           <div style={styles.categoriesGrid}>
-            {categories.map((cat, idx) => (
+            {[
+              { icon: '📖', name: 'Bible Stories', desc: '30 interactive stories' },
+              { icon: '💭', name: 'Memory Verses', desc: '40 Scripture memorization' },
+              { icon: '🙏', name: 'Prayer Time', desc: '35 guided prayers' },
+              { icon: '🎨', name: 'Art & Creativity', desc: '40 faith-based art' },
+              { icon: '🎵', name: 'Music & Songs', desc: '30 worship songs' },
+              { icon: '🧘', name: 'Meditation', desc: '35 calming exercises' },
+              { icon: '🧩', name: 'Puzzles & Games', desc: '45 brain games' },
+              { icon: '🏃', name: 'Movement', desc: '30 physical activities' },
+              { icon: '📝', name: 'Journaling', desc: '25 reflection prompts' },
+              { icon: '❤️', name: 'Emotions', desc: '35 feelings activities' },
+              { icon: '👥', name: 'Social Skills', desc: '30 interaction practice' },
+              { icon: '📚', name: 'Reading', desc: '35 Bible readings' },
+              { icon: '🎭', name: 'Role Play', desc: '20 dramatic activities' },
+              { icon: '🌍', name: 'Nature & Science', desc: '30 God's creation' },
+              { icon: '🎁', name: 'Service Projects', desc: '15 giving back' }
+            ].map((cat, idx) => (
               <div key={idx} style={styles.categoryCard}>
                 <div style={styles.categoryIcon}>{cat.icon}</div>
-                <h4 style={styles.categoryName}>{cat.name}</h4>
+                <div style={styles.categoryName}>{cat.name}</div>
                 <p style={styles.categoryDesc}>{cat.desc}</p>
               </div>
             ))}
           </div>
         </section>
 
-        {/* FAQs */}
-        <section id="faqs" style={styles.section}>
+        {/* FAQ */}
+        <section id="faq" style={styles.section}>
           <h2 style={styles.sectionTitle}>❓ Frequently Asked Questions</h2>
           <div style={styles.faqContainer}>
             {faqs.map((faq, idx) => (
               <div key={idx} style={styles.faqItem}>
-                <button
+                <button 
                   onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
                   style={styles.faqQuestion}
                 >
                   <span>{faq.q}</span>
-                  <span style={styles.faqArrow}>{activeFaq === idx ? '▼' : '▶'}</span>
+                  <span style={styles.faqArrow}>{activeFaq === idx ? '▲' : '▼'}</span>
                 </button>
                 {activeFaq === idx && (
                   <div style={styles.faqAnswer}>{faq.a}</div>
@@ -282,16 +275,16 @@ Input('');
         <section id="troubleshooting" style={styles.section}>
           <h2 style={styles.sectionTitle}>🔧 Troubleshooting Guide</h2>
           <div style={styles.troubleContainer}>
-            {Object.entries(troubleshooting).map(([category, issues], catIdx) => (
-              <div key={catIdx} style={styles.troubleCategory}>
+            {Object.entries(troubleshooting).map(([category, issues], idx) => (
+              <div key={idx} style={styles.troubleCategory}>
                 <button
-                  onClick={() => setActiveTrouble(activeTrouble === catIdx ? null : catIdx)}
+                  onClick={() => setActiveTrouble(activeTrouble === idx ? null : idx)}
                   style={styles.troubleCategoryBtn}
                 >
                   <span style={styles.troubleCategoryTitle}>{category}</span>
-                  <span style={styles.troubleArrow}>{activeTrouble === catIdx ? '▼' : '▶'}</span>
+                  <span style={styles.troubleArrow}>{activeTrouble === idx ? '▲' : '▼'}</span>
                 </button>
-                {activeTrouble === catIdx && (
+                {activeTrouble === idx && (
                   <div style={styles.troubleIssues}>
                     {issues.map((item, issueIdx) => (
                       <div key={issueIdx} style={styles.troubleItem}>
