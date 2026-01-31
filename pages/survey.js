@@ -245,7 +245,7 @@ export default function Survey() {
       }, { merge: true });
 
       // Redirect to dashboard
-      router.push('/dashboard');
+      router.push('/activities');
 
     } catch (error) {
       console.error('Survey submission error:', error);
